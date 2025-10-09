@@ -1,0 +1,217 @@
+<Button Click="Button_Click" Grid.Row="0" Grid.Column="2" Background="LightCoral">Elapsed Time</Button>
+<Button Click="Button_Click" Tag="Reset" Grid.Row="1" Grid.Column="2" Background="Aquamarine">Reset</Button>
+<TextBlock Name="TimeDisplay" FontSize="28" Grid.Row="0" Grid.Column="1">
+    Hello World!
+</TextBlock>
+
+
+
+Absolutely! Let’s go **line by line** so you really understand what each part of your calculator code does. I’ll explain both **C# syntax** and **why it’s there for your calculator**.
+
+---
+
+### **Namespaces / using statements**
+
+```csharp
+using System.Diagnostics;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Collections.Generic;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+```
+
+* `using ...` tells C# which libraries you want to use.
+* Examples:
+
+  * `System.Windows.Controls` → gives access to WPF controls like `Button` and `Label`.
+  * `System.Collections.Generic` → allows using `List<string>`, a collection type.
+  * `System.Windows.Media` → colors, brushes, fonts for UI.
+* These let you write code without typing the full path every time.
+
+---
+
+### **Namespace & Class**
+
+```csharp
+namespace Caculator
+{
+    public partial class MainWindow : Window
+```
+
+* `namespace Caculator` → wraps all your code to avoid conflicts with other projects.
+* `public partial class MainWindow : Window` → defines your main WPF window class.
+
+  * `partial` → allows splitting class definition between XAML and code-behind.
+  * `: Window` → means `MainWindow` **inherits** from WPF `Window` (the actual window you see).
+
+---
+
+### **Fields**
+
+```csharp
+private readonly string[] operators = new string[] {"ON/OFF", "*", "+", "-", "=", "/", "%", "CLEAR" };
+private string _label = " ";
+private Int32 _grand_total = 0;
+private List<string> buttons = new List<string>();
+private double _currentValue = 0;    // Current number entered or result
+private string _currentOperator = ""; // Current operator (+, -, *, /)
+private bool _newEntry = true;       // Is the next number a new entry?
+```
+
+* `operators` → array of strings for special buttons and operators; used to **check if a button is an operator**.
+* `_label` → currently unused, likely meant for storing label text (could remove).
+* `_grand_total` → unused, maybe intended for total calculations.
+* `buttons` → list of all clicked buttons (history); not strictly needed for basic calculator.
+* `_currentValue` → keeps track of the **current number or result**.
+* `_currentOperator` → remembers the last operator clicked (`+`, `-`, etc.) so we know what to calculate next.
+* `_newEntry` → `true` if the next number should **replace** the label instead of appending.
+
+---
+
+### **Constructor**
+
+```csharp
+public MainWindow()
+{
+    InitializeComponent();
+}
+```
+
+* `InitializeComponent()` → **required in WPF**, connects your XAML UI with this C# code.
+* Basically tells the program: “Build the buttons, labels, and layout from XAML.”
+
+---
+
+### **Button_Click event**
+
+```csharp
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+    Button button = (Button)sender;
+    string tag = (string)button.Tag;
+```
+
+* `Button_Click` → runs **every time a button is clicked**.
+* `sender` → the button that was clicked.
+* `button.Tag` → gets the `Tag` property of the button (we set it to `"1"`, `"+"`, etc. in XAML).
+* `string tag = (string)button.Tag;` → stores the button’s tag as a string for easier comparison.
+
+---
+
+### **Handle CLEAR button**
+
+```csharp
+if (tag == "CLEAR")
+{
+    DisplayLabel.Content = "0";
+    _currentValue = 0;
+    _currentOperator = "";
+    _newEntry = true;
+    return;
+}
+```
+
+* If the user clicks `CLEAR`:
+
+  1. Reset the label to `0`.
+  2. Reset current value and operator.
+  3. `_newEntry = true` → next number typed replaces label.
+  4. `return` → stops the rest of the method from running.
+
+---
+
+### **Handle number buttons**
+
+```csharp
+if (!operators.Contains(tag))
+{
+    if (_newEntry || DisplayLabel.Content.ToString() == "0")
+    {
+        DisplayLabel.Content = tag;
+        _newEntry = false;
+    }
+    else
+    {
+        DisplayLabel.Content += tag;
+    }
+    return;
+}
+```
+
+* `!operators.Contains(tag)` → this is a **number button** (not an operator).
+* `_newEntry || DisplayLabel.Content.ToString() == "0"` → if we are starting a new number, or label shows `0`:
+
+  * Replace label with new number.
+* `else` → append the number to the label (so you can type multiple digits).
+* `_newEntry = false` → now any further number clicks **append** instead of replacing.
+* `return` → stops method here if it’s a number button.
+
+---
+
+### **Handle operator buttons**
+
+```csharp
+double labelNumber = double.Parse(DisplayLabel.Content.ToString());
+```
+
+* Converts the label text to a `double` so we can calculate with it.
+
+---
+
+```csharp
+if (_currentOperator != "")
+{
+    switch (_currentOperator)
+    {
+        case "+": _currentValue += labelNumber; break;
+        case "-": _currentValue -= labelNumber; break;
+        case "*": _currentValue *= labelNumber; break;
+        case "/": _currentValue /= labelNumber; break;
+    }
+    DisplayLabel.Content = _currentValue.ToString();
+}
+else
+{
+    _currentValue = labelNumber; // first number
+}
+```
+
+* If an operator was clicked **previously**, calculate the last operation:
+
+  * Example: `3 + 2` → `+` is `_currentOperator`, `3` is `_currentValue`, `2` is `labelNumber`.
+* If no previous operator (`_currentOperator == ""`), just store the first number.
+* Update the label to show the **current result**.
+
+---
+
+```csharp
+_currentOperator = tag == "=" ? "" : tag; // reset operator if "=" pressed
+_newEntry = true; // next number starts fresh
+```
+
+* If `=` is pressed → reset `_currentOperator` because calculation is done.
+* Otherwise → store the operator for the next calculation.
+* `_newEntry = true` → the next number typed **replaces** the label.
+
+---
+
+### ✅ **Summary of flow**
+
+1. User clicks a number → label updates.
+2. User clicks operator → calculator stores the number and operator.
+3. User types another number → calculator calculates previous operation if applicable.
+4. User presses `=` → shows result.
+5. `CLEAR` resets everything.
+
+---
+
+If you want, I can **draw a simple diagram showing how `_currentValue`, `_currentOperator`, and `_newEntry` change** with each button click—it makes this flow much easier to visualize.
+
+Do you want me to do that?

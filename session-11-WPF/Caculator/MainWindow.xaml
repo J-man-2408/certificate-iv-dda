@@ -1,0 +1,54 @@
+﻿<Window x:Class="Caculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Caculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Name="DisplayLabel"  Content="0" FontSize="44" Grid.Column="0" Grid.ColumnSpan="4" VerticalContentAlignment="Center" Tag="Label" Margin="0,0,0,20"/>
+
+        <Button FontSize="40" Grid.Row="1" Grid.Column="0" Content="-" Tag="-" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="1" Grid.Column="1" Content="/" Tag="/" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="1" Grid.Column="2" Content="*" Tag="*" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="1" Grid.Column="3" Content="+" Tag="+" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+
+        <Button FontSize="40" Grid.Row="2" Grid.Column="0" Content="9" Tag="9" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="2" Grid.Column="1" Content="8" Tag="8" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="2" Grid.Column="2" Content="7" Tag="7" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="2" Grid.Column="3" Content="6" Tag="6" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+
+        <Button FontSize="40" Grid.Row="3" Grid.Column="0" Content="5" Tag="5" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="3" Grid.Column="1" Content="4" Tag="4" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="3" Grid.Column="2" Content="3" Tag="3" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="3" Grid.Column="3" Content="2" Tag="2" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+
+        <Button FontSize="40" Grid.Row="4" Grid.Column="0" Content="1" Tag="1" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="4" Grid.Column="1" Content="0" Tag="0" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="4" Grid.Column="2" Content="%" Tag="%" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="20" Grid.Row="4" Grid.Column="3" Content="ON/OFF" Tag="ON/OFF" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+
+        <Button FontSize="40" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="CLEAR" Tag="CLEAR" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Content="=" Tag="=" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+
+
+
+
+    </Grid>
+</Window>
