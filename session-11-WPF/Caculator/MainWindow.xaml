@@ -5,7 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Caculator"
         mc:Ignorable="d"
+        d:DesignStyle="{x:Null}"
         Title="MainWindow" Height="600" Width="400">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="Courier New"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="25"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -23,7 +45,7 @@
         </Grid.RowDefinitions>
 
         <Label Name="DisplayLabel"  Content="0" FontSize="44" Grid.Column="0" Grid.ColumnSpan="4" VerticalContentAlignment="Center" Tag="Label" Margin="0,0,0,20"/>
-
+        
         <Button FontSize="40" Grid.Row="1" Grid.Column="0" Content="-" Tag="-" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
         <Button FontSize="40" Grid.Row="1" Grid.Column="1" Content="/" Tag="/" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
         <Button FontSize="40" Grid.Row="1" Grid.Column="2" Content="*" Tag="*" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
@@ -42,12 +64,11 @@
         <Button FontSize="40" Grid.Row="4" Grid.Column="0" Content="1" Tag="1" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
         <Button FontSize="40" Grid.Row="4" Grid.Column="1" Content="0" Tag="0" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
         <Button FontSize="40" Grid.Row="4" Grid.Column="2" Content="%" Tag="%" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
-        <Button FontSize="20" Grid.Row="4" Grid.Column="3" Content="ON/OFF" Tag="ON/OFF" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="20" Grid.Row="4" Grid.Column="3" Content="." Tag="." Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
 
-        <Button FontSize="40" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="CLEAR" Tag="CLEAR" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
-        <Button FontSize="40" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Content="=" Tag="=" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
-
-
+        <Button FontSize="40" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="ON/OFF" Tag="ON/OFF" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="5" Grid.Column="2" Content="C" Tag="CLEAR" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
+        <Button FontSize="40" Grid.Row="5" Grid.Column="3" Content="=" Tag="=" Click="Button_Click" Background="LightBlue" Foreground="Black" Margin="5"/>
 
 
     </Grid>
