@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "film-finder", "film-finder.csproj", "{461CE8F3-84A5-477D-861B-49949FCEDEA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{461CE8F3-84A5-477D-861B-49949FCEDEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461CE8F3-84A5-477D-861B-49949FCEDEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461CE8F3-84A5-477D-861B-49949FCEDEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461CE8F3-84A5-477D-861B-49949FCEDEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9201FCD-E128-4D0A-8D3B-166AB5C5E70A}
+	EndGlobalSection
+EndGlobal

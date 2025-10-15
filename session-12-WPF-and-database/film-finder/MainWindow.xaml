@@ -1,0 +1,100 @@
+﻿<Window x:Class="film_finder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:film_finder"
+        mc:Ignorable="d"
+        Title="Film Finder" Height="450" Width="800">
+    <Grid Margin="5" Background="#F6F6F6">
+        <Grid.Resources>
+            <Style TargetType="{x:Type Control}">
+                <Setter Property="Margin" Value="0,0,0,5" />
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="30"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="53.005" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Label 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            
+            FontWeight="Bold" 
+            FontSize="14"
+            Foreground="MediumPurple"
+            Content="Jasmine's Film Finder" 
+            Grid.Row="0"
+            Grid.Column="0"
+        />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            x:Name="SearchBar"
+            VerticalAlignment="Center"
+            FontSize="24"
+        />
+        <Button
+            Grid.Row="0"
+            Grid.Column="2"
+            Background="#D8BFD8"
+            Content="Search"
+            Click="Button_Click"
+        />
+        <ListBox
+            x:Name="FilmResults"
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="4"
+            Background="#5D3FD3"
+            Foreground="#ffffff"
+        />
+
+        <Button
+            Content="A-Z"
+            Grid.Row="1"
+            Grid.Column="0"
+            Background="#D8BFD8"
+            Tag="alphabetical"
+            Click="SortingMode_Click"
+        />
+        <Button
+            Content="By Year Descending"
+            Grid.Row="2"
+            Grid.Column="0"
+            Background="#D8BFD8"
+            Tag="chronological desc"
+            Click="SortingMode_Click"
+        />
+        <TextBlock
+            x:Name="ErrorBox"
+            Grid.Row="4"
+            Grid.Column="0"
+            Background="MediumPurple"
+            Visibility="Collapsed"
+            TextWrapping="Wrap"
+            Text=""
+        />
+        <Button 
+            Content="By Year Ascending"
+            Grid.Row="3"
+            Grid.Column="0"
+            Background="#D8BFD8"
+            Tag="chronological asc"
+            Click="SortingMode_Click" />
+
+    </Grid>
+</Window>
