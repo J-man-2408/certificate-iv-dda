@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApp39.Updaterecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp39"
+        mc:Ignorable="d"
+        Title="Updaterecord" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="ButtonStackPanel"
+ Grid.Column="2" 
+ Grid.Row="5" 
+ Orientation="Horizontal">
+            <Button x:Name="Save"
+             Background="LightGray"
+             Foreground="Black"
+             Content="Save"
+             MinWidth="80"
+             Margin="0,4,0,3.8"
+             Padding="16,4"
+             Click="Save_Click" Width="155"/>
+
+            <Button x:Name="Clear"
+                Background="LightGray"
+                Foreground="Black"
+                Content="Clear"
+                MinWidth="80"
+                Margin="0,4,0,3.8"
+                Padding="16,4"
+                 Width="155" Click="Clear_Click"/>
+            <Button  x:Name="Close"     Content="Close" Width="156" Margin="0,4,0,3.8" Click="Close_Click"/>
+
+
+        </StackPanel>
+        <Label x:Name="VehicleNumberPlateLabel"
+            Content="Number Plate" 
+            Grid.Column="1" 
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Left" Margin="0,29.2,0.2,25.6"/>
+        <Label x:Name="VehicleSpeedLabel"
+            Content="Recorded Speed" 
+            Grid.Column="1" 
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Left" Margin="0,30.4,0.2,25.4" />
+
+        <Label x:Name="SpeedLimitLabel"
+            Content="Speed Limit" 
+            Grid.Row="4"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Left" Margin="0,25.6,8.2,29.2" Grid.ColumnSpan="2" />
+
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+
+
+
+        <TextBox x:Name="numberplatetb" TextWrapping="Wrap" Text="{Binding NumberPlate,  Mode=TwoWay}" Grid.Column="1" Margin="311,10.2,6.6,9.6" Grid.Row="2" 
+                 Grid.ColumnSpan="2" IsReadOnly="True"/>
+        <TextBox x:Name="speedtb" TextWrapping="Wrap" Text="{Binding Speed,  Mode=TwoWay}" Grid.Column="1" Margin="311,10.4,1.6,9.4" Grid.Row="3" 
+                 Grid.ColumnSpan="2"/>
+        <TextBox x:Name="speedlimittb" TextWrapping="Wrap" Text="{Binding SpeedLimit,  Mode=TwoWay}" Grid.Column="1" Margin="311,9.6,2.6,10.2" 
+                 Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="61" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="758" Grid.ColumnSpan="2" Source="traff.jpg" Stretch="UniformToFill"/>
+    </Grid>
+</Window>

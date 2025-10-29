@@ -1,0 +1,76 @@
+﻿<Window x:Class="WpfApp39.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp39"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="24"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+        <Label
+            x:Name="SearchLabel"
+            Content="Search by number plate"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="8,8,5.6,7.2"
+            FontSize="18"
+            />
+        <TextBox
+            x:Name="SearchTextbox"
+            Grid.Column="2"
+            Grid.Row="1"
+            MinHeight="32"
+            Margin="10.4,8,7.6,7.2"
+            TextWrapping="wrap"
+            Text=""
+            FontSize="14"
+         />
+        <Button x:Name="FillButton" Content="Fill list" 
+                Click="FillButton_Click" FontSize="14" Background="LightGray"  Foreground="Black" 
+                Grid.Column="1" Grid.Row="2" Margin="0,4,496.6,0" Height="51" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+        <ListBox
+            x:Name="VehicleListbox"
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Background="LightGray"
+            Margin="10.2,9,7.6,9.6"
+            Padding="8"
+           SelectionChanged="VehicleListbox_SelectionChanged"
+            
+         />
+        <Button x:Name= "Searchrecord" Content="Search" Grid.Column="1" HorizontalAlignment="Left"   Background="LightGray"  Foreground="Black" FontSize="16" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="249" Click="Button_Click" Margin="0,4.8,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="Deleterecord" Content="Delete" Grid.Column="1"  Background="LightGray"  Foreground="Black" FontSize="16"  HorizontalAlignment="Left" Margin="0,6.4,0,0" Grid.Row="5" VerticalAlignment="Top" Width="249" Height="51" Click="Deleterecord_Click" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="Editrecord" Content="Edit"  Background="LightGray"  Foreground="Black" FontSize="16"    Grid.Column="1" HorizontalAlignment="Left" Margin="0,3.6,0,0" Grid.Row="4" VerticalAlignment="Top" Width="249" Height="53" Click="Editrecord_Click" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Button Content="Insert"  Background="LightGray"  Foreground="Black" FontSize="16"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="249" Grid.Column="1" Margin="0,1.4,0,0" Grid.Row="6" Height="54" Click="Button_Click_1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Image Grid.Column="2" HorizontalAlignment="Left" Height="55" Margin="8.2,0.2,0,0" Grid.Row="7" VerticalAlignment="Top" Width="479" Source="traff.jpg" Stretch="UniformToFill" StretchDirection="Both"/>
+        <CheckBox Content="Speeding Vehicles" Grid.Column="2" HorizontalAlignment="Left" Margin="22.2,10.4,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="SpeedingCheckbox_Checked"
+                Unchecked="SpeedingCheckbox_Unchecked"/>
+        <CheckBox Content="Non Speeding Vehicles" Grid.Column="2" HorizontalAlignment="Left" Margin="22.2,30.4,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="Checkbox_Checked"
+                Unchecked="Checkbox_Unchecked"/>
+        <DataGrid x:Name="Datagrid"  
+                  Grid.Column="2" HorizontalAlignment="Left"
+                  Height="50" Margin="210.2,0.4,0,0" Grid.Row="6" 
+                  VerticalAlignment="Top" Width="277"/>
+        <Button  x:Name="Demerits"   Content="Demerits"  Background="LightGray"  Foreground="Black" FontSize="16"   HorizontalAlignment="Left" VerticalAlignment="Top" Width="249" Grid.Column="1" Margin="0,0.2,0,0" Grid.Row="7" Height="54" Click="Demerits_Click" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>
